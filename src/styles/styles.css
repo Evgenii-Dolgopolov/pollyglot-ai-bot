@@ -6,3 +6,45 @@
   box-sizing: border-box;
 }
 
+/* HEADER */
+.header {
+  position: relative;
+  height: 12em;
+  overflow: hidden;
+}
+
+.header-background-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; 
+}
+
+.header-foreground {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.header-logo {
+  width: 7em;
+  height: auto;
+  margin-right: 1em;
+}
+
+.header-title {
+  font-size: 2.5em;
+  margin-bottom: 0.325em;
+  color: #32CD32;
+
+}
+
+.header-subtitle {
+  font-size: 1.125em;
+  color: #fafafa;
+}
