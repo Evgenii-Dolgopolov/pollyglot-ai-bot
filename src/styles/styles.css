@@ -72,16 +72,18 @@ body {
 .container-frame {
   border: 3px solid black;
   border-radius: 0.75em;
-  padding: 0 2em 2em;
+  padding: 0 2em;
   display: flex;
+  justify-content: space-between;
+  gap: 2em;
   margin: auto;
   flex-direction: column;
-  max-height: 50vh;
+  max-height: 100vh;
   min-width: 500px;
   max-width: 550px;
-  justify-content: center;
 }
 
+/* INPUT SECTION */
 .input-section {
   display: flex;
   flex-direction: column;
@@ -89,13 +91,13 @@ body {
   margin: auto;
 }
 
-.input-section-title {
+.input-section-title-label {
   color: var(--title-color);
   display: flex;
   justify-content: center;
   font-weight: 700;
   font-size: 1.25em;
-  padding: 1em 0;
+  padding: 1.25em 0 0.75em;
 }
 
 .input-textarea {
@@ -115,10 +117,61 @@ body {
   outline: none;
 }
 
+/* OUTPUT SECTION */
 .output-section {
   display: flex;
   flex-direction: column;
-  justify-items: center;
-  margin: auto;
-  height: 100vh;
+}
+
+.output-title-section-container {
+  display: flex;
+  justify-content: center;
+  padding: 1em 0;
+}
+
+.output-title-section-label {
+  color: var(--title-color);
+  font-weight: 700;
+  font-size: 1.25em;
+}
+
+.radio-btn-section {
+  padding: 0 3em;
+  font-weight: 700;
+  font-size: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375em;
+}
+
+.radio-btns {
+  display: flex;
+}
+
+.radio-btn-input-label {
+  padding: 0 0.5em;
+}
+
+.img-jpn-flag {
+  border: 0.5px solid black;
+}
+
+/* TRANSLATE BUTTON */
+.translate-btn-container {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  padding: 2em;
+}
+
+.translate-btn {
+  background-color: var(--title-color);
+  border-style: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.5em;
+  width: 400px;
+  max-width: 100vh;
+  padding: 0.5em;
 }
