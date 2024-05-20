@@ -1,8 +1,11 @@
 import React from "react"
+import { fetchTranslation } from "../../../api"
 
 export default function Translator() {
   const [inputText, setInputText] = React.useState("")
   const [selectedLanguage, setSelectedLanguage] = React.useState("fr")
+  const [translatedText, setTranslatedText] = React.useState("")
+  const [isTranslating, setIsTranslating] = React.useState(false)
 
   const handleInputChange = event => {
     setInputText(event.target.value)
@@ -12,9 +15,18 @@ export default function Translator() {
     setSelectedLanguage(event.target.value)
   }
 
-  const handleTranslate = () => {
+  const handleTranslate = async () => {
     // Your translation logic here
-    console.log("Translating:", inputText, "to", selectedLanguage);
+    setIsTranslating(true)
+    try {
+      const translation = await fetchTranslation(inputText, selectedLanguage);
+      setTranslatedText(translation);
+    } catch (error) {
+      console.error("Error translating text:", error);
+      setTranslatedText("Translation failed. Please try again.");
+    } finally {
+      // setIsTranslating(false);
+    }
   }
 
   return (
@@ -22,7 +34,7 @@ export default function Translator() {
       <div className="container-frame">
         <div className="input-section">
           <label className="input-section-title-label" htmlFor="inputText">
-            Text to Translate:
+            {!isTranslating ? "Text to Translate:" : "Original Text:"}
           </label>
           <textarea
             id="inputText"
@@ -71,10 +83,7 @@ export default function Translator() {
               <label className="radio-btn-input-label" htmlFor="spanish">
                 Spanish
               </label>
-              <img
-                src="/assets/sp-flag.png"
-                alt="spanish flag"
-              />
+              <img src="/assets/sp-flag.png" alt="spanish flag" />
             </div>
             <div className="radio-btns">
               <input
@@ -98,7 +107,9 @@ export default function Translator() {
         </div>
 
         <div className="translate-btn-container">
-          <button onClick={handleTranslate} className="translate-btn">Translate</button>
+          <button onClick={handleTranslate} className="translate-btn">
+            Translate
+          </button>
         </div>
       </div>
     </div>
