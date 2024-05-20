@@ -16,7 +16,7 @@ export default function Translator() {
     // Your translation logic here
     console.log("Translating:", inputText, "to", selectedLanguage);
   }
-
+// {/* OUTPUT SECTION BRANCH */}
   return (
     <div className="container">
       <div className="container-frame">
@@ -43,7 +43,7 @@ export default function Translator() {
               Select language:
             </label>
           </div>
-{/* OUTPUT SECTION BRANCH */}
+
           <div className="radio-btn-section">
             <div className="radio-btns">
               <input
