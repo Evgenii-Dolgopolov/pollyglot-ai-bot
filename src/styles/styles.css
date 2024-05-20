@@ -126,6 +126,7 @@ body {
 .output-title-section-container {
   display: flex;
   justify-content: center;
+  margin: auto;
   padding: 1em 0;
 }
 
@@ -136,12 +137,18 @@ body {
 }
 
 .radio-btn-section {
-  padding: 0 3em;
+  /* padding: 0 3em; */
+  margin: auto;
   font-weight: 700;
   font-size: 1em;
   display: flex;
   flex-direction: column;
   gap: 0.375em;
+}
+
+.output-section-wrapper > textarea {
+  margin: auto;
+  display: flex;
 }
 
 .radio-btns {

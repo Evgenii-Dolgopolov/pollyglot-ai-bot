@@ -19,14 +19,17 @@ export default function Translator() {
     // Your translation logic here
     setIsTranslating(true)
     try {
-      const translation = await fetchTranslation(inputText, selectedLanguage);
-      setTranslatedText(translation);
+      const translation = await fetchTranslation(inputText, selectedLanguage)
+      setTranslatedText(translation)
     } catch (error) {
-      console.error("Error translating text:", error);
-      setTranslatedText("Translation failed. Please try again.");
-    } finally {
-      // setIsTranslating(false);
+      console.error("Error translating text:", error)
+      setTranslatedText("Translation failed. Please try again.")
     }
+  }
+
+  const handleReset = () => {
+    setInputText("")
+    setIsTranslating(false)
   }
 
   return (
@@ -47,69 +50,94 @@ export default function Translator() {
           />
         </div>
 
-        <div className="output-section">
-          <div className="output-title-section-container">
-            <label
-              className="output-title-section-label"
-              htmlFor="sourceLanguage">
-              Select language:
-            </label>
-          </div>
+        {!isTranslating ? (
+          <div className="output-section">
+            <div className="output-title-section-container">
+              <label
+                className="output-title-section-label"
+                htmlFor="sourceLanguage">
+                Select language:
+              </label>
+            </div>
 
-          <div className="radio-btn-section">
-            <div className="radio-btns">
-              <input
-                type="radio"
-                id="french"
-                name="language"
-                value="fr"
-                checked={selectedLanguage === "fr"}
-                onChange={handleLanguageChange}
-              />
-              <label className="radio-btn-input-label" htmlFor="french">
-                French
-              </label>
-              <img src="/assets/fr-flag.png" alt="french flag" />
-            </div>
-            <div className="radio-btns">
-              <input
-                type="radio"
-                id="spanish"
-                name="language"
-                value="es"
-                checked={selectedLanguage === "es"}
-                onChange={handleLanguageChange}
-              />
-              <label className="radio-btn-input-label" htmlFor="spanish">
-                Spanish
-              </label>
-              <img src="/assets/sp-flag.png" alt="spanish flag" />
-            </div>
-            <div className="radio-btns">
-              <input
-                type="radio"
-                id="japanese"
-                name="language"
-                value="ja"
-                checked={selectedLanguage === "ja"}
-                onChange={handleLanguageChange}
-              />
-              <label className="radio-btn-input-label" htmlFor="japanese">
-                Japanese
-              </label>
-              <img
-                className="img-jpn-flag"
-                src="/assets/jpn-flag.png"
-                alt="japanese flag"
-              />
+            <div className="radio-btn-section">
+              <div className="radio-btns">
+                <input
+                  type="radio"
+                  id="french"
+                  name="language"
+                  value="fr"
+                  checked={selectedLanguage === "fr"}
+                  onChange={handleLanguageChange}
+                />
+                <label className="radio-btn-input-label" htmlFor="french">
+                  French
+                </label>
+                <img src="/assets/fr-flag.png" alt="french flag" />
+              </div>
+              <div className="radio-btns">
+                <input
+                  type="radio"
+                  id="spanish"
+                  name="language"
+                  value="es"
+                  checked={selectedLanguage === "es"}
+                  onChange={handleLanguageChange}
+                />
+                <label className="radio-btn-input-label" htmlFor="spanish">
+                  Spanish
+                </label>
+                <img src="/assets/sp-flag.png" alt="spanish flag" />
+              </div>
+              <div className="radio-btns">
+                <input
+                  type="radio"
+                  id="japanese"
+                  name="language"
+                  value="ja"
+                  checked={selectedLanguage === "ja"}
+                  onChange={handleLanguageChange}
+                />
+                <label className="radio-btn-input-label" htmlFor="japanese">
+                  Japanese
+                </label>
+                <img
+                  className="img-jpn-flag"
+                  src="/assets/jpn-flag.png"
+                  alt="japanese flag"
+                />
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div className="output-section-wrapper">
+            <div className="output-title-section-container">
+              <label
+                className="output-title-section-label"
+                htmlFor="sourceLanguage">
+                Select language:
+              </label>
+            </div>
+            <textarea
+              id="inputText"
+              className="input-textarea"
+              rows="6"
+              cols="50"
+              value="Translated text here"
+            />
+          </div>
+        )}
 
         <div className="translate-btn-container">
-          <button onClick={handleTranslate} className="translate-btn">
-            Translate
-          </button>
+          {!isTranslating ? (
+            <button onClick={handleTranslate} className="translate-btn">
+              Translate
+            </button>
+          ) : (
+            <button onClick={handleReset} className="translate-btn">
+              Start Over
+            </button>
+          )}
         </div>
       </div>
     </div>
