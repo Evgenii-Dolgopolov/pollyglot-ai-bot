@@ -11,7 +11,7 @@ export async function fetchTranslation(text, language) {
   const messages = [
     {
       role: "system",
-      content: "You are a helpful assistant.",
+      content: "You are an online translator. As a result you only provide a translation without any additional information.",
       temperature: 1,
       presence_penalty: 0,
       frequency_penalty: 0,
@@ -27,7 +27,6 @@ export async function fetchTranslation(text, language) {
       messages: messages,
       model: "gpt-3.5-turbo",
     })
-    console.log(completion.choices[0].message.content)
     return completion.choices[0].message.content
   } catch (error) {
     console.error("Error: ", error)

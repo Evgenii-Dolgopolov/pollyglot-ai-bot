@@ -1,11 +1,13 @@
 import React from "react"
 import { fetchTranslation } from "../../../api"
 
+
 export default function Translator() {
   const [inputText, setInputText] = React.useState("")
   const [selectedLanguage, setSelectedLanguage] = React.useState("fr")
   const [translatedText, setTranslatedText] = React.useState("")
   const [isTranslating, setIsTranslating] = React.useState(false)
+  const textareaRef = React.useRef(null)
 
   const handleInputChange = event => {
     setInputText(event.target.value)
@@ -16,7 +18,6 @@ export default function Translator() {
   }
 
   const handleTranslate = async () => {
-    // Your translation logic here
     setIsTranslating(true)
     try {
       const translation = await fetchTranslation(inputText, selectedLanguage)
@@ -29,9 +30,11 @@ export default function Translator() {
 
   const handleReset = () => {
     setInputText("")
+    setTranslatedText("")
     setIsTranslating(false)
+    textareaRef.current.select()
   }
-
+  
   return (
     <div className="container">
       <div className="container-frame">
@@ -41,8 +44,10 @@ export default function Translator() {
           </label>
           <textarea
             id="inputText"
+            ref={textareaRef}
+            type="text"
             className="input-textarea"
-            placeholder="How are you?"
+            placeholder="What would you like to translate?"
             rows="6"
             cols="50"
             value={inputText}
@@ -115,15 +120,18 @@ export default function Translator() {
               <label
                 className="output-title-section-label"
                 htmlFor="sourceLanguage">
-                Select language:
+                Your Translation:
               </label>
             </div>
             <textarea
               id="inputText"
               className="input-textarea"
+              placeholder="Translation will appear here..."
               rows="6"
               cols="50"
-              value="Translated text here"
+              value={translatedText}
+              // readOnly
+              style={{ userSelect: "text" }}
             />
           </div>
         )}
