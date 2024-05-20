@@ -43,7 +43,7 @@ export default function Translator() {
               Select language:
             </label>
           </div>
-
+{/* OUTPUT SECTION BRANCH */}
           <div className="radio-btn-section">
             <div className="radio-btns">
               <input
