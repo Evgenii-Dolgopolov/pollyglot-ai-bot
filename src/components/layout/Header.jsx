@@ -5,13 +5,13 @@ export default function Header() {
     <header className="header">
       <img
         className="header-background-img"
-        src="../../../public/assets/worldmap.png"
+        src="/assets/worldmap.png"
         alt="world map image header"
       />
       <div className="header-foreground">
         <img
           className="header-logo"
-          src="../../../public/assets/parrot.png"
+          src="/assets/parrot.png"
           alt="parrot"
         />
         <div>

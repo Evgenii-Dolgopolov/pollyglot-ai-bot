@@ -1,6 +1,22 @@
 import React from "react"
 
 export default function Translator() {
+  const [inputText, setInputText] = React.useState("")
+  const [selectedLanguage, setSelectedLanguage] = React.useState("fr")
+
+  const handleInputChange = event => {
+    setInputText(event.target.value)
+  }
+
+  const handleLanguageChange = event => {
+    setSelectedLanguage(event.target.value)
+  }
+
+  const handleTranslate = () => {
+    // Your translation logic here
+    console.log("Translating:", inputText, "to", selectedLanguage);
+  }
+
   return (
     <div className="container">
       <div className="container-frame">
@@ -14,8 +30,8 @@ export default function Translator() {
             placeholder="How are you?"
             rows="6"
             cols="50"
-            // value={inputText}
-            // onChange={handleInputChange}
+            value={inputText}
+            onChange={handleInputChange}
           />
         </div>
 
@@ -35,13 +51,13 @@ export default function Translator() {
                 id="french"
                 name="language"
                 value="fr"
-                // checked={selectedLanguage === "fr"}
-                // onChange={handleLanguageChange}
+                checked={selectedLanguage === "fr"}
+                onChange={handleLanguageChange}
               />
               <label className="radio-btn-input-label" htmlFor="french">
                 French
               </label>
-              <img src="../../../public/assets/fr-flag.png" alt="french flag" />
+              <img src="/assets/fr-flag.png" alt="french flag" />
             </div>
             <div className="radio-btns">
               <input
@@ -49,14 +65,14 @@ export default function Translator() {
                 id="spanish"
                 name="language"
                 value="es"
-                // checked={selectedLanguage === "es"}
-                // onChange={handleLanguageChange}
+                checked={selectedLanguage === "es"}
+                onChange={handleLanguageChange}
               />
               <label className="radio-btn-input-label" htmlFor="spanish">
                 Spanish
               </label>
               <img
-                src="../../../public/assets/sp-flag.png"
+                src="/assets/sp-flag.png"
                 alt="spanish flag"
               />
             </div>
@@ -66,15 +82,15 @@ export default function Translator() {
                 id="japanese"
                 name="language"
                 value="ja"
-                // checked={selectedLanguage === "ja"}
-                // onChange={handleLanguageChange}
+                checked={selectedLanguage === "ja"}
+                onChange={handleLanguageChange}
               />
               <label className="radio-btn-input-label" htmlFor="japanese">
                 Japanese
               </label>
               <img
                 className="img-jpn-flag"
-                src="../../../public/assets/jpn-flag.png"
+                src="/assets/jpn-flag.png"
                 alt="japanese flag"
               />
             </div>
@@ -82,7 +98,7 @@ export default function Translator() {
         </div>
 
         <div className="translate-btn-container">
-          <button className="translate-btn">Translate</button>
+          <button onClick={handleTranslate} className="translate-btn">Translate</button>
         </div>
       </div>
     </div>
